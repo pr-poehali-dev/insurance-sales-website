@@ -21,33 +21,41 @@ const benefits = [
   { emoji: "🛡️", title: "До 300 000 ₽", desc: "Покрытие лечения, операций, анализов и госпитализации." },
   { emoji: "❤️", title: "Без отказов", desc: "Страхуем любые породы от 2 месяцев. Без справок о здоровье." },
   { emoji: "📞", title: "Поддержка 24/7", desc: "Ветеринарная горячая линия для срочных консультаций — бесплатно." },
-  { emoji: "💰", title: "От 990 ₽/год", desc: "Доступные тарифы для любого бюджета. Оплата раз в год." },
+  { emoji: "💰", title: "От 6 000 ₽/год", desc: "Доступные тарифы для любого бюджета. Оплата раз в год." },
 ];
 
 const plans = [
   {
-    name: "Базовый",
-    price: "990",
+    name: "Травмы",
+    price: "6 000",
     color: "from-amber-50 to-orange-50",
     border: "border-amber-200",
     badge: "",
-    items: ["Лечение болезней до 50 000 ₽", "Экстренная хирургия", "Анализы и диагностика", "Горячая линия ветеринара"],
+    items: ["Выплата до 50 000 ₽", "Покрытие травм и несчастных случаев", "Переломы, вывихи, раны", "Горячая линия ветеринара"],
   },
   {
-    name: "Комфорт",
-    price: "1 990",
+    name: "Травмы + болезни",
+    price: "20 000",
     color: "from-orange-50 to-amber-100",
     border: "border-orange-300",
     badge: "Популярный",
-    items: ["Лечение болезней до 150 000 ₽", "Все виды операций", "Госпитализация до 14 дней", "Стоматология", "Прививки и профосмотр", "Горячая линия 24/7"],
+    items: ["Выплата до 150 000 ₽", "Покрытие травм и заболеваний", "Диагностика и лечение болезней", "Анализы и обследования", "Горячая линия 24/7"],
   },
   {
-    name: "Премиум",
-    price: "3 490",
+    name: "Травмы + острые болезни",
+    price: "7 000",
+    color: "from-sky-50 to-blue-50",
+    border: "border-sky-200",
+    badge: "",
+    items: ["Выплата до 100 000 ₽", "Покрытие травм", "Острые заболевания", "Экстренная помощь"],
+  },
+  {
+    name: "Всё включено",
+    price: "35 000",
     color: "from-teal-50 to-emerald-50",
     border: "border-teal-300",
-    badge: "",
-    items: ["Лечение болезней до 300 000 ₽", "Все виды операций и реабилитация", "Неограниченная госпитализация", "Онкология", "Стоматология", "Чипирование", "Личный куратор"],
+    badge: "Максимум",
+    items: ["Выплата до 300 000 ₽", "Травмы и все заболевания", "Стационарное лечение", "Операции и реабилитация", "Личный куратор 24/7"],
   },
 ];
 
@@ -234,11 +242,11 @@ export default function Index() {
             </h2>
             <p className="text-[#5a3e2b] text-lg">Выберите подходящий план защиты для вашего питомца</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 items-stretch">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {plans.map((p, i) => (
               <div
                 key={i}
-                className={`relative rounded-3xl border-2 ${p.border} bg-gradient-to-br ${p.color} p-8 flex flex-col ${i === 1 ? 'shadow-2xl md:scale-105' : 'hover:shadow-lg'} transition-all ${plansSection.inView ? 'animate-slide-up' : 'opacity-0'}`}
+                className={`relative rounded-3xl border-2 ${p.border} bg-gradient-to-br ${p.color} p-8 flex flex-col ${i === 3 ? 'shadow-2xl md:scale-105' : 'hover:shadow-lg'} transition-all ${plansSection.inView ? 'animate-slide-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
                 {p.badge && (
@@ -263,7 +271,7 @@ export default function Index() {
                 </ul>
                 <a
                   href="#form"
-                  className={`block text-center py-3.5 rounded-2xl font-bold text-sm transition-all hover:scale-105 ${i === 1 ? 'bg-[#e8601f] text-white shadow-lg shadow-orange-200' : 'bg-white text-[#e8601f] border-2 border-orange-200 hover:border-orange-300'}`}
+                  className={`block text-center py-3.5 rounded-2xl font-bold text-sm transition-all hover:scale-105 ${i === 3 ? 'bg-[#e8601f] text-white shadow-lg shadow-orange-200' : 'bg-white text-[#e8601f] border-2 border-orange-200 hover:border-orange-300'}`}
                 >
                   Выбрать тариф
                 </a>

@@ -130,7 +130,7 @@ export default function Index() {
           <div className="grid lg:grid-cols-2 gap-8 items-end">
             <div className={`pb-16 ${heroSection.inView ? 'animate-fade-in' : 'opacity-0'}`}>
               <div className="inline-flex items-center gap-2 bg-white/80 border border-amber-200 rounded-full px-4 py-2 mb-6 text-sm text-amber-800 font-medium shadow-sm">
-                <span>✨</span> Страхование собак №1 в России
+                <span className="text-xs">🤝</span> <span>Официальный представитель и партнёр СПАО «Ингосстрах»</span>
               </div>
               <h1 className="text-6xl md:text-7xl font-bold leading-[0.95] mb-6 text-[#1a120a]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                 Ваш пёс<br />

@@ -128,7 +128,7 @@ export default function Index() {
                 лучшего
               </h1>
               <p className="text-lg text-[#5a3e2b] max-w-md mb-8 leading-relaxed" style={{ fontFamily: 'Golos Text, sans-serif' }}>
-                Лечение собаки может стоить сотни тысяч рублей. Страховка Ингосстрах защитит вашу семью от неожиданных расходов — от 990 ₽ в год.
+                Лечение собаки может стоить сотни тысяч рублей. Страховка Ингосстрах защитит вашу семью от неожиданных расходов — от 6 000 ₽ в год.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a

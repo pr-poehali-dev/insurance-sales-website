@@ -91,8 +91,13 @@ export default function Index() {
   const faqSection = useInView(0.1);
   const formSection = useInView(0.1);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    await fetch("https://functions.poehali.dev/88b263a7-24e6-4ec4-bbbb-980b1e3890c9", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
     setSubmitted(true);
   };
 

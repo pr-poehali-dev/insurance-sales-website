@@ -21,7 +21,7 @@ const benefits = [
   { emoji: "🛡️", title: "До 300 000 ₽", desc: "Покрытие лечения, операций, анализов и госпитализации." },
   { emoji: "❤️", title: "Без отказов", desc: "Страхуем любые породы от 2 месяцев. Без справок о здоровье." },
   { emoji: "📞", title: "Поддержка 24/7", desc: "Ветеринарная горячая линия для срочных консультаций — бесплатно." },
-  { emoji: "💰", title: "От 990 ₽/мес", desc: "Доступные тарифы для любого бюджета. Оплата помесячно." },
+  { emoji: "💰", title: "От 990 ₽/год", desc: "Доступные тарифы для любого бюджета. Оплата раз в год." },
 ];
 
 const plans = [
@@ -120,7 +120,7 @@ export default function Index() {
                 лучшего
               </h1>
               <p className="text-lg text-[#5a3e2b] max-w-md mb-8 leading-relaxed" style={{ fontFamily: 'Golos Text, sans-serif' }}>
-                Лечение собаки может стоить сотни тысяч рублей. Страховка У Нас Лапки защитит вашу семью от неожиданных расходов — от 990 ₽ в месяц.
+                Лечение собаки может стоить сотни тысяч рублей. Страховка Ингосстрах защитит вашу семью от неожиданных расходов — от 990 ₽ в год.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
@@ -250,7 +250,7 @@ export default function Index() {
                   <div className="text-sm font-semibold text-[#5a3e2b] uppercase tracking-widest mb-2">{p.name}</div>
                   <div className="flex items-baseline gap-1">
                     <span className="text-5xl font-black text-[#1a120a]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>{p.price}</span>
-                    <span className="text-[#5a3e2b] text-sm">₽/мес</span>
+                    <span className="text-[#5a3e2b] text-sm">₽/год</span>
                   </div>
                 </div>
                 <ul className="space-y-3 flex-1 mb-8">

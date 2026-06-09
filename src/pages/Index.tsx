@@ -76,7 +76,11 @@ const stats = [
 ];
 
 export default function Index() {
-  const [form, setForm] = useState({ name: "", phone: "", breed: "", age: "" });
+  const [form, setForm] = useState({
+    dogName: "", dogGender: "", dogAge: "", dogBreed: "", dogColor: "", dogChip: "", plan: "",
+    fio: "", address: "", passportSeries: "", passportDate: "", passportCode: "", passportIssuedBy: "",
+    phone: "", email: "", consent: false,
+  });
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -333,64 +337,153 @@ export default function Index() {
                   Заполните анкету — наш специалист свяжется с вами в течение 15 минут
                 </p>
               </div>
-              <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Ваше имя</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Иван"
-                      value={form.name}
-                      onChange={e => setForm({ ...form, name: e.target.value })}
-                      className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Телефон</label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+7 900 000-00-00"
-                      value={form.phone}
-                      onChange={e => setForm({ ...form, phone: e.target.value })}
-                      className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm"
-                    />
-                  </div>
-                </div>
+              <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 space-y-6">
+
+                {/* Данные о питомце */}
                 <div>
-                  <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Порода собаки</label>
-                  <input
-                    type="text"
-                    placeholder="Лабрадор, хаски, двортерьер..."
-                    value={form.breed}
-                    onChange={e => setForm({ ...form, breed: e.target.value })}
-                    className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm"
-                  />
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-lg">🐶</span>
+                    <span className="text-white font-bold text-base">Данные о питомце</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Кличка</label>
+                      <input type="text" required placeholder="Барсик" value={form.dogName}
+                        onChange={e => setForm({ ...form, dogName: e.target.value })}
+                        className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                    </div>
+                    <div>
+                      <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Пол</label>
+                      <select required value={form.dogGender} onChange={e => setForm({ ...form, dogGender: e.target.value })}
+                        className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm appearance-none">
+                        <option value="" className="bg-[#2d1b0e]">Выберите</option>
+                        <option value="male" className="bg-[#2d1b0e]">Кобель</option>
+                        <option value="female" className="bg-[#2d1b0e]">Сука</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Возраст</label>
+                      <input type="text" required placeholder="2 года" value={form.dogAge}
+                        onChange={e => setForm({ ...form, dogAge: e.target.value })}
+                        className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                    </div>
+                    <div>
+                      <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Порода</label>
+                      <input type="text" required placeholder="Лабрадор" value={form.dogBreed}
+                        onChange={e => setForm({ ...form, dogBreed: e.target.value })}
+                        className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                    </div>
+                    <div>
+                      <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Окрас</label>
+                      <input type="text" placeholder="Рыжий" value={form.dogColor}
+                        onChange={e => setForm({ ...form, dogColor: e.target.value })}
+                        className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                    </div>
+                    <div>
+                      <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">№ чипа / клейма</label>
+                      <input type="text" placeholder="Если есть" value={form.dogChip}
+                        onChange={e => setForm({ ...form, dogChip: e.target.value })}
+                        className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Вариант страхования</label>
+                    <select required value={form.plan} onChange={e => setForm({ ...form, plan: e.target.value })}
+                      className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm appearance-none">
+                      <option value="" className="bg-[#2d1b0e]">Выберите тариф</option>
+                      <option value="trauma" className="bg-[#2d1b0e]">Травмы — 6 000 ₽/год (до 50 000 ₽)</option>
+                      <option value="trauma-acute" className="bg-[#2d1b0e]">Травмы + острые болезни — 7 000 ₽/год (до 100 000 ₽)</option>
+                      <option value="trauma-disease" className="bg-[#2d1b0e]">Травмы + заболевания — 20 000 ₽/год (до 150 000 ₽)</option>
+                      <option value="full" className="bg-[#2d1b0e]">Всё включено со стационаром — 35 000 ₽/год (до 300 000 ₽)</option>
+                    </select>
+                  </div>
                 </div>
+
+                <div className="border-t border-white/10" />
+
+                {/* Данные владельца */}
                 <div>
-                  <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Возраст собаки</label>
-                  <select
-                    value={form.age}
-                    onChange={e => setForm({ ...form, age: e.target.value })}
-                    className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm appearance-none"
-                  >
-                    <option value="" className="bg-[#2d1b0e]">Выберите возраст</option>
-                    <option value="puppy" className="bg-[#2d1b0e]">Щенок (до 1 года)</option>
-                    <option value="1-3" className="bg-[#2d1b0e]">1–3 года</option>
-                    <option value="3-7" className="bg-[#2d1b0e]">3–7 лет</option>
-                    <option value="7+" className="bg-[#2d1b0e]">Старше 7 лет</option>
-                  </select>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-lg">👤</span>
+                    <span className="text-white font-bold text-base">Данные владельца</span>
+                  </div>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">ФИО</label>
+                      <input type="text" required placeholder="Иванов Иван Иванович" value={form.fio}
+                        onChange={e => setForm({ ...form, fio: e.target.value })}
+                        className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                    </div>
+                    <div>
+                      <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Адрес прописки</label>
+                      <input type="text" required placeholder="г. Москва, ул. Примерная, д. 1, кв. 1" value={form.address}
+                        onChange={e => setForm({ ...form, address: e.target.value })}
+                        className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Серия и номер паспорта</label>
+                        <input type="text" required placeholder="1234 567890" value={form.passportSeries}
+                          onChange={e => setForm({ ...form, passportSeries: e.target.value })}
+                          className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                      </div>
+                      <div>
+                        <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Дата выдачи</label>
+                        <input type="date" required value={form.passportDate}
+                          onChange={e => setForm({ ...form, passportDate: e.target.value })}
+                          className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                      </div>
+                      <div>
+                        <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Код подразделения</label>
+                        <input type="text" required placeholder="123-456" value={form.passportCode}
+                          onChange={e => setForm({ ...form, passportCode: e.target.value })}
+                          className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                      </div>
+                      <div>
+                        <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Кем выдан</label>
+                        <input type="text" required placeholder="УМВД России по..." value={form.passportIssuedBy}
+                          onChange={e => setForm({ ...form, passportIssuedBy: e.target.value })}
+                          className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Номер телефона</label>
+                        <input type="tel" required placeholder="+7 900 000-00-00" value={form.phone}
+                          onChange={e => setForm({ ...form, phone: e.target.value })}
+                          className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                      </div>
+                      <div>
+                        <label className="block text-amber-200 text-xs font-semibold uppercase tracking-wider mb-2">Email</label>
+                        <input type="email" required placeholder="ivan@example.com" value={form.email}
+                          onChange={e => setForm({ ...form, email: e.target.value })}
+                          className="w-full bg-white/15 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-orange-400 focus:bg-white/20 transition-all text-sm" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-[#e8601f] text-white py-4 rounded-2xl font-bold text-base hover:bg-[#c94e0f] transition-all hover:scale-105 shadow-lg shadow-orange-900/30 mt-2"
-                >
-                  Получить расчёт бесплатно →
+
+                <div className="border-t border-white/10" />
+
+                {/* Согласие */}
+                <label className="flex items-start gap-3 cursor-pointer group">
+                  <div className="relative flex-shrink-0 mt-0.5">
+                    <input type="checkbox" required checked={form.consent}
+                      onChange={e => setForm({ ...form, consent: e.target.checked })}
+                      className="sr-only" />
+                    <div className={`w-5 h-5 rounded-md border-2 transition-all flex items-center justify-center ${form.consent ? 'bg-[#e8601f] border-[#e8601f]' : 'border-white/30 bg-white/10'}`}>
+                      {form.consent && <Icon name="Check" size={12} className="text-white" />}
+                    </div>
+                  </div>
+                  <span className="text-white/60 text-xs leading-relaxed group-hover:text-white/80 transition-colors">
+                    Я даю согласие на обработку персональных данных в соответствии с Федеральным законом №152-ФЗ «О персональных данных» и соглашаюсь с условиями страхования
+                  </span>
+                </label>
+
+                <button type="submit" disabled={!form.consent}
+                  className="w-full bg-[#e8601f] text-white py-4 rounded-2xl font-bold text-base hover:bg-[#c94e0f] transition-all hover:scale-105 shadow-lg shadow-orange-900/30 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100">
+                  Отправить заявку →
                 </button>
-                <p className="text-center text-white/40 text-xs">
-                  Нажимая кнопку, вы соглашаетесь на обработку персональных данных
-                </p>
               </form>
             </div>
           ) : (
@@ -400,7 +493,7 @@ export default function Index() {
                 Заявка принята!
               </h2>
               <p className="text-amber-200 text-lg mb-2">
-                Спасибо, {form.name || "дорогой друг"}!
+                Спасибо, {form.fio.split(" ")[1] || "дорогой друг"}!
               </p>
               <p className="text-white/60 text-base">
                 Наш специалист свяжется с вами по номеру {form.phone} в течение 15 минут.

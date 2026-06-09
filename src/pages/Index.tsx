@@ -91,7 +91,7 @@ export default function Index() {
           <div className="flex items-center gap-2">
             <span className="text-2xl">🐾</span>
             <span className="font-black text-xl tracking-tight text-[#c45a1a]" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-              ПёсОК
+              У Нас Лапки
             </span>
           </div>
           <a
@@ -120,7 +120,7 @@ export default function Index() {
                 лучшего
               </h1>
               <p className="text-lg text-[#5a3e2b] max-w-md mb-8 leading-relaxed" style={{ fontFamily: 'Golos Text, sans-serif' }}>
-                Лечение собаки может стоить сотни тысяч рублей. Страховка ПёсОК защитит вашу семью от неожиданных расходов — от 990 ₽ в месяц.
+                Лечение собаки может стоить сотни тысяч рублей. Страховка У Нас Лапки защитит вашу семью от неожиданных расходов — от 990 ₽ в месяц.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
@@ -188,7 +188,7 @@ export default function Index() {
         <div ref={benefitsSection.ref} className="max-w-6xl mx-auto px-4">
           <div className={`text-center mb-14 ${benefitsSection.inView ? 'animate-fade-in' : 'opacity-0'}`}>
             <h2 className="text-5xl md:text-6xl font-bold text-[#1a120a] mb-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-              Почему ПёсОК?
+              Почему У Нас Лапки?
             </h2>
             <p className="text-[#5a3e2b] text-lg max-w-xl mx-auto">
               Мы создали страховку, которую сами хотели бы иметь для своих питомцев
@@ -409,7 +409,7 @@ export default function Index() {
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="text-xl">🐾</span>
-            <span className="font-black text-white" style={{ fontFamily: 'Cormorant Garamond, serif' }}>ПёсОК</span>
+            <span className="font-black text-white" style={{ fontFamily: 'Cormorant Garamond, serif' }}>У Нас Лапки</span>
             <span className="text-white/30 text-sm ml-2">© 2024</span>
           </div>
           <div className="flex gap-6 text-white/50 text-sm">

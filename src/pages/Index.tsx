@@ -83,6 +83,13 @@ export default function Index() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showFloating, setShowFloating] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowFloating(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const heroSection = useInView(0.1);
   const benefitsSection = useInView(0.1);
@@ -516,6 +523,17 @@ export default function Index() {
           )}
         </div>
       </section>
+
+      {/* FLOATING BUTTON */}
+      <div className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${showFloating ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+        <a href="#form"
+          className="flex items-center gap-2 bg-[#e8601f] text-white px-6 py-4 rounded-2xl font-bold text-sm shadow-2xl shadow-orange-900/40 hover:bg-[#c94e0f] hover:scale-105 transition-all"
+          style={{ boxShadow: '0 8px 32px rgba(232,96,31,0.5)' }}>
+          <span>🐾</span>
+          Оформить полис
+          <Icon name="ArrowRight" size={16} />
+        </a>
+      </div>
 
       {/* FOOTER */}
       <footer className="bg-[#1a120a] py-8 border-t border-white/10">

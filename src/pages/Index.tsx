@@ -486,8 +486,14 @@ export default function Index() {
                 </label>
 
                 <button type="submit" disabled={!form.consent}
-                  className="w-full bg-[#e8601f] text-white py-4 rounded-2xl font-bold text-base hover:bg-[#c94e0f] transition-all hover:scale-105 shadow-lg shadow-orange-900/30 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100">
-                  Отправить заявку →
+                  className="w-full relative overflow-hidden group py-5 rounded-2xl font-bold text-base transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  style={{ background: 'linear-gradient(135deg, #e8601f 0%, #ff8c42 50%, #e8601f 100%)', backgroundSize: '200% 200%', boxShadow: '0 8px 32px rgba(232,96,31,0.45), 0 2px 8px rgba(0,0,0,0.2)' }}>
+                  <span className="relative z-10 flex items-center justify-center gap-3 text-white text-lg">
+                    <Icon name="Send" size={20} />
+                    Отправить заявку
+                    <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                  </span>
+                  <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </button>
               </form>
             </div>
